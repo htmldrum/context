@@ -10,6 +10,7 @@ package google
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 
 	"github.com/htmldrum/context/userip"
@@ -61,6 +62,7 @@ func Search(ctx context.Context, query string) (Results, error) {
 				}
 			}
 		}
+		log.Println(resp.Body)
 		if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
 			return err
 		}

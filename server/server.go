@@ -65,6 +65,9 @@ func handleSearch(w http.ResponseWriter, req *http.Request) {
 	// Run the Google search and print the results.
 	start := time.Now()
 	results, err := google.Search(ctx, query)
+	
+	log.Println(results)
+	
 	elapsed := time.Since(start)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
